@@ -41,7 +41,6 @@ userSchema.pre('save', function(next) {
 
 userSchema.methods.comparePassword = function(passwordState) {
     const user = this;
-np
     return new Promise((resolve, reject) => {
         bcrypt.compare(passwordState, user.password, (err, isMatch) => {
             if(err){
