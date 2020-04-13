@@ -28,9 +28,13 @@ router.get('/subaccounts/:id', (req, res) => {
 
 //CREATE
 router.post('/subaccounts/create', async (req, res) => {
-    const { subAcct, subDesc, subGroup, active } = req.body;
+    
+    const { SubAcct, SubDesc, SubGroup, Active } = req.body;
+    if(req){
+        console.log(req.body);
+    }
     try {
-        const subaccount = new SubAccountModel({ subAcct, subDesc, subGroup, active });
+        const subaccount = new SubAccountModel({ SubAcct, SubDesc, SubGroup, Active });
         await subaccount.save();
         res.send('<p>Successfully Created</p>');
     } catch (error) {
@@ -40,15 +44,15 @@ router.post('/subaccounts/create', async (req, res) => {
 
 //UPDATE ID
 router.post('/subaccounts/update/:id', async (req, res) => {
-    const { subAcct, subDesc, subGroup, active } = req.body;
+    const { SubAcct, SubDesc, SubGroup, Active } = req.body;
     SubAccountModel.findById(req.params.id, function(err, subaccount) {
         if (!subaccount)
         res.status(404).send("data is not found");
         else
-        subaccount.subAcct = subAcct;
-        subaccount.subDesc = subDesc;
-        subaccount.subGroup = subGroup;
-        subaccount.active = active;
+        subaccount.SubAcct = SubAcct;
+        subaccount.SubDesc = SubDesc;
+        subaccount.SubGroup = SubGroup;
+        subaccount.Active = Active;
         subaccount.save().then(subaccount => {
             res.json('Sub Account updated!');
         })

@@ -1,19 +1,19 @@
 const mongoose = require('mongoose')
 
 const SubAccountSchema = new mongoose.Schema({
-    subAcct: {
+    SubAcct: {
         type: String,
         required: true
     },
-    subDesc: {
+    SubDesc: {
         type: String,
         required: true
     },
-    subGroup: {
+    SubGroup: {
         type: String,
         required: true
     },
-    active: {
+    Active: {
         type: String,
         required: true
     }
